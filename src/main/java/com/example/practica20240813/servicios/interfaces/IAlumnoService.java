@@ -1,11 +1,12 @@
 package com.example.practica20240813.servicios.interfaces;
 
-import com.example.practica20240813.modelos.Alumno;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.practica20240813.modelos.Alumno;
 
 public interface IAlumnoService {
     Page<Alumno> buscarTodosPaginados(Pageable pageable);
@@ -15,6 +16,5 @@ public interface IAlumnoService {
     Optional<Alumno> buscarPorId(Long id);
 
     Alumno crearOEditar(Alumno grupo);
-
     void eliminarPorId(Long id);
 }

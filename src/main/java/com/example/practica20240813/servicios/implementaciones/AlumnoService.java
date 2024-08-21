@@ -1,15 +1,16 @@
 package com.example.practica20240813.servicios.implementaciones;
 
-import com.example.practica20240813.modelos.Alumno;
-import com.example.practica20240813.repositorios.IAlumnoRepository;
-import com.example.practica20240813.servicios.interfaces.IAlumnoService;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.practica20240813.modelos.Alumno;
+import com.example.practica20240813.repositorios.IAlumnoRepository;
+import com.example.practica20240813.servicios.interfaces.IAlumnoService;
 
 @Service
 public class AlumnoService implements IAlumnoService {
@@ -29,8 +30,7 @@ public class AlumnoService implements IAlumnoService {
     @Override
     public Optional<Alumno> buscarPorId(Long id) {
         return AlumnoRepository.findById(id);
-    }
-
+    }    
     @Override
     public Alumno crearOEditar(Alumno Alumno) {
         return AlumnoRepository.save(Alumno);
