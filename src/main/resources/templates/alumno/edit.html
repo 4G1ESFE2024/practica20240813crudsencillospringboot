@@ -20,7 +20,10 @@
                     <input type="text" class="form-control" th:field="*{apellido}" id="apellido" placeholder="Escriba el apellido del alumno" required>
                 </div>
             </div>
-        </div>        
+        </div>  
+        <div class="row" th:with="action=${'edit'}">            
+            <th:block th:insert="~{/alumno/_telefonos.html}"></th:block>
+        </div>      
         <hr>
         <button type="submit" class="btn btn-primary">Guardar cambios</button> |
         <a th:href="@{/alumnos}">Regresar</a>

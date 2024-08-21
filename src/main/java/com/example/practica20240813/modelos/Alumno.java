@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -21,8 +22,8 @@ public class Alumno {
     private String nombre;
     @NotBlank(message = "El apellido es requerido")
     private String apellido;
-
-     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Valid
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TelefonosAlumno> telefonos;
 
     public Long getId() {
@@ -56,5 +57,5 @@ public class Alumno {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-   
+
 }

@@ -20,9 +20,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" th:with="action=${'create'}">
             
-            <th:block th:insert="/alumno/_telefonos.html"></th:block>
+            <th:block th:insert="~{/alumno/_telefonos.html}"></th:block>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary">Guardar</button> |
