@@ -5,8 +5,9 @@
 
 <div layout:fragment="content">
     <h1>Editar aula</h1>
-    <form th:action="@{/aulas/save}" th:object="${aula}" method="post">
+    <form th:action="@{/aulas/save}" th:object="${aula}" method="post" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
+      
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -28,7 +29,8 @@
                     <textarea class="form-control" th:field="*{descripcion}" id="descripcion" cols="12" rows="3"></textarea>
                 </div>
             </div>
-        </div>       
+        </div>    
+        <th:block th:with="action=${'edit'}" th:insert="~{/aula/_image.html}"></th:block>   
         <hr>
         <button type="submit" class="btn btn-primary">Guardar cambios</button> |
         <a th:href="@{/aulas}">Regresar</a>

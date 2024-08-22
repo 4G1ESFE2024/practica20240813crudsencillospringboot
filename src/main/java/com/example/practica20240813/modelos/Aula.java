@@ -12,6 +12,14 @@ public class Aula {
     private String nombre;   
     private String descripcion;
     private String profesor;
+    private String urlPerfil;
+    public String getUrlPerfil() {
+        return urlPerfil;
+    }
+    public void setUrlPerfil(String urlPerfil) {
+        this.urlPerfil = urlPerfil;
+    }
+   
     public String getProfesor() {
         return profesor;
     }

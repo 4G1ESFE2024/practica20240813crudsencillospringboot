@@ -1,23 +1,35 @@
 <table class="table table-striped">
     <thead>
-        <tr>           
+        <tr>
             <th>Telefono</th>
-            <th><button type="submit" class="btn btn-primary" th:formaction="@{/alumnos/addtelefonos}" >+</button></th>
-        </tr>      
+            <th th:if="${action == 'create' || action == 'edit'}">
+                <button type="submit" class="btn btn-success" th:formaction="@{/alumnos/addtelefonos}">+</button>
+            </th>
+        </tr>
     </thead>
     <tbody>
         <tr>
-            <tr th:each="item , index: ${alumno.telefonos}">               
-                <td style="display: none;">
-                    <input type="hidden" class="form-control" th:value="${item.id}" th:name="'telefonos[' + ${index.index} + '].id'" id="id">
-                </td>
-                <td >
-                    <input type="text" class="form-control" th:value="${item.telefono}" th:name="'telefonos[' + ${index.index} + '].telefono'" id="telefono" required>
-                </td>
-                <td>          
-                    <button type="submit" class="btn btn-primary" th:formaction="@{/alumnos/deltelefonos/{id} (id = ${item.id})}" >Eliminar</button>                             
-                </td>
-            </tr>
-        </tr>      
+        <tr th:each="item , index: ${alumno.telefonos}">
+            <td style="display: none;">
+                <input type="hidden" class="form-control" th:value="${item.id}"
+                    th:name="'telefonos[' + ${index.index} + '].id'" id="id">
+            </td>
+            <td>
+                <input type="text" class="form-control" th:value="${item.telefono}" data-block
+                    th:name="'telefonos[' + ${index.index} + '].telefono'" id="telefono" required>
+            </td>
+            <td th:if="${action == 'create' || action == 'edit'}">
+                <button type="submit" class="btn btn-outline-danger"
+                    th:formaction="@{/alumnos/deltelefonos/{id} (id = ${item.id})}">Eliminar</button>
+            </td>
+        </tr>
+        </tr>
     </tbody>
 </table>
+<script th:if="${action == 'delete' || action == 'details'}">
+    const blockInputs = document.querySelectorAll("*[data-block]");
+    for (var i = 0; i < blockInputs.length; i++) {
+        const element=blockInputs[i];
+        element.setAttribute("disabled","disabled");
+    }
+</script>

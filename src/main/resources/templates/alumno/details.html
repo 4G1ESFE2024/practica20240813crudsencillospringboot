@@ -17,8 +17,10 @@
             <dt class = "col-sm-2">Apellido</dt>
             <dd class = "col-sm-10" th:text="${alumno.apellido}"></dd>
         </dl>
-
-        <a th:href="@{/alumnos/edit/{id} (id = ${alumno.id}) }" class="btn btn-outline-info">Editar</a> |
-        <a th:href="@{/alumnos}">Regresar</a>
+        <div class="row" th:with="action=${'details'}">            
+            <th:block th:insert="~{/alumno/_telefonos.html}"></th:block>
+        </div>
+        <a th:href="@{/alumnos/edit/{id} (id = ${alumno.id}) }" class="btn btn-outline-info">Editar</a>
+        <a th:href="@{/alumnos}" class="btn btn-secondary">Regresar</a>
     </div>
 </div>

@@ -20,7 +20,7 @@
             <dt class = "col-sm-2">Descripcion</dt>
             <dd class = "col-sm-10" th:text="${aula.descripcion}"></dd>
         </dl>
-
+        <th:block th:with="action=${'details'}" th:insert="~{/aula/_image.html}"></th:block>
         <a th:href="@{/aulas/edit/{id} (id = ${aula.id}) }" class="btn btn-outline-info">Editar</a> |
         <a th:href="@{/aulas}">Regresar</a>
     </div>

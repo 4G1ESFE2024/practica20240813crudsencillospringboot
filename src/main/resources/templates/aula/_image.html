@@ -1,0 +1,29 @@
+<br>
+<div class="row" th:if="${action == 'create' || action == 'edit'}">            
+    <div class="col-md-6">
+        <div class="form-group">
+            <label >Subir imagen</label>
+            <input type="file" name="file" id="file"  accept="image/*"> 
+            <button type="button" class="btn btn-danger" onclick="clearFile()">Clear</button>                             
+        </div>
+    </div>      
+</div>
+<div class="row" th:if="${action != 'create' && aula.urlPerfil!=null && aula.urlPerfil.trim().length() > 0 }">
+    <img style="max-width: 200px;" id="imageAula" th:src="@{'/aulas/images/' + ${aula.id}}" alt="Imagen">
+    <input type="hidden" id="urlPerfil" name="urlPerfil" th:value="${aula.urlPerfil}">  
+    <!--<div class=" col-md-3">
+        <button  th:if="${ action == 'edit'}" type="button" class="btn btn-danger" onclick="deleteImage()">Eliminar Imagen</button>  
+    </div> -->
+       
+   
+    <!-- Opcional: Mostrar un mensaje si la imagen no se puede cargar -->  
+</div>
+<script>
+    function clearFile() {
+        document.getElementById('file').value = '';
+    }
+    function deleteImage() {
+        document.getElementById('urlPerfil').value ="delete";
+        document.getElementById('imageAula').style.display = "none";               
+    }
+</script>
